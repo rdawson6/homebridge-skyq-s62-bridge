@@ -1,0 +1,90 @@
+{
+    "pluginAlias": "SkyQS62Bridge",
+    "pluginType": "platform",
+    "singular": true,
+    "headerDisplay": "Polls Sky Q boxes and forwards now-playing data to a Systemline S6.2 via a Global Cache iTach IP2SL RS232 bridge. Reconstructs the Sky Gnome RS232 protocol so the S6.2 touch screen displays channel and programme information. No HomeKit accessories are created — this is a background bridge service.",
+    "footerDisplay": "Each Sky Q box needs a static IP address. The iTach IP2SL must be configured for 57600 baud, 8N1, no flow control on its serial port.",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "title": "Platform Name",
+                "type": "string",
+                "default": "Sky Q S6.2 Bridge"
+            },
+            "sky_boxes": {
+                "title": "Sky Q Boxes",
+                "type": "array",
+                "items": {
+                    "title": "Sky Q Box",
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "title": "Name",
+                            "type": "string",
+                            "placeholder": "Sky Q",
+                            "required": true
+                        },
+                        "skyq_ip": {
+                            "title": "Sky Q IP Address",
+                            "type": "string",
+                            "placeholder": "192.168.1.x",
+                            "required": true
+                        },
+                        "itach_ip": {
+                            "title": "iTach IP2SL IP Address",
+                            "type": "string",
+                            "placeholder": "192.168.1.y",
+                            "required": true
+                        },
+                        "itach_port": {
+                            "title": "iTach TCP Port",
+                            "type": "integer",
+                            "default": 4999,
+                            "description": "TCP port on the iTach IP2SL that maps to the RS232 serial port. Default is 4999."
+                        },
+                        "poll_interval": {
+                            "title": "Poll Interval (seconds)",
+                            "type": "integer",
+                            "default": 15,
+                            "minimum": 5,
+                            "maximum": 60,
+                            "description": "How often to poll the Sky Q box for now-playing data. 15 seconds is a good balance."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "layout": [
+        {
+            "type": "section",
+            "title": "Bridge Settings",
+            "expandable": false,
+            "items": [
+                "name"
+            ]
+        },
+        {
+            "type": "section",
+            "title": "Sky Q Boxes",
+            "description": "Add one entry per Sky Q box. Each box needs its own iTach IP2SL serial output wired to the S6.2 RS232 input.",
+            "expandable": true,
+            "expanded": true,
+            "items": [
+                {
+                    "key": "sky_boxes",
+                    "type": "array",
+                    "buttonText": "Add Sky Q Box",
+                    "items": [
+                        "sky_boxes[].name",
+                        "sky_boxes[].skyq_ip",
+                        "sky_boxes[].itach_ip",
+                        "sky_boxes[].itach_port",
+                        "sky_boxes[].poll_interval"
+                    ]
+                }
+            ]
+        }
+    ]
+}
