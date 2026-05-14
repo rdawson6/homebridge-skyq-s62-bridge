@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.1] - 2026-05-14
+
+### Added
+- Systemline S6.2 branding icon (`branding/icon.png`) — now shows in Homebridge UI plugin list
+
 ## [1.1.0] - 2026-05-14
 
 ### Added
