@@ -1,6 +1,6 @@
 {
   "name": "homebridge-skyq-s62-bridge",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "displayName": "Sky Q S6.2 Bridge",
   "description": "Homebridge plugin that polls Sky Q boxes and forwards now-playing data to a Systemline S6.2 via a Global Cache iTach IP2SL RS232 bridge. Reconstructs the Sky Gnome RS232 protocol so the S6.2 touch screen displays channel and programme information.",
   "main": "index.js",
